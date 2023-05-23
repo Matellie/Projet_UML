@@ -39,7 +39,7 @@ public:
 	string id; 
 	User* user;
 	Position position;	
-	vector <Measurement*> measurements;
+	unordered_map <time_t, Measurement*> measurements;
 
 	//----------------------------------------------------- Méthodes publiques
 
