@@ -24,24 +24,8 @@
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Data & Data::operator = ( const Data & unData )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
-Data::Data ( const Data & unData )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Data>" << endl;
-#endif
-} //----- Fin de Data (constructeur de copie)
-
-
 Data::Data ( )
 // Algorithme :
 //

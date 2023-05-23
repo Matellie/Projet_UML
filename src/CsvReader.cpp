@@ -21,6 +21,8 @@ Data *CsvReader::readCsv()
     readSensorsCsv(data);
     readUsersCsv(data);
     readMeasurementsCsv(data);
+
+    return data;
 }
 
 void CsvReader::readSensorsCsv(Data *data)
