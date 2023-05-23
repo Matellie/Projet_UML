@@ -22,6 +22,7 @@ obj/Position.o: src/Position.cpp src/Position.h
 obj/Sensor.o: src/Sensor.cpp src/Sensor.h src/Position.h src/Measurement.h src/User.h
 obj/User.o: src/User.cpp src/User.h
 obj/Analyse.o: src/Analyse.cpp src/Analyse.h src/Data.h
+obj/InterfaceConsole.o: src/InterfaceConsole.cpp src/InterfaceConsole.h
 
 $(OBJ) :
 	@echo $<

@@ -1,13 +1,13 @@
 
 /*************************************************************************
-                           Position  -  description
+                           Measurement  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Position> (fichier Position.h) ----------------
+//---------- Interface de la classe <Measurement> (fichier Measurement.h) ----------------
 #if !defined( MEASUREMENT_H )
 #define MEASUREMENT_H
 
@@ -66,6 +66,6 @@ protected:
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Position>
+//-------------------------------- Autres définitions dépendantes de <Measurement>
 
 #endif // POSITION_H
