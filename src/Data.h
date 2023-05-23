@@ -16,7 +16,9 @@ using namespace std;
 #include <unordered_map>
 #include <vector>
 
-//#include "User.h"
+#include "User.h"
+#include "Sensor.h"
+#include "Measurement.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -34,9 +36,9 @@ class Data
 
 public:
 //----------------------------------------------------- Attributs publics
-//unordered_map<string id, User* user> users;
-//unordered_map<string id, Sensor* sensor> sensors;
-//vector<Measurement*> measurements;
+unordered_map<string, User*> users;
+unordered_map<string, Sensor*> sensors;
+vector<Measurement*> measurements;
 
 //----------------------------------------------------- Méthodes publiques
 
