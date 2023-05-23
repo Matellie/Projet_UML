@@ -23,7 +23,7 @@ obj/Sensor.o: src/Sensor.cpp src/Sensor.h src/Position.h src/Measurement.h src/U
 obj/User.o: src/User.cpp src/User.h
 
 $(OBJ) :
-	echo $(OBJ)
+	@echo $<
 	g++ -c -o $@ $(CPPFLAGS) $<
 
 clean :
