@@ -8,7 +8,12 @@ public:
     CsvReader();
     ~CsvReader();
 
-    Data data;
+    Data readCsv();
+
+protected:
+    void readSensorsCsv(Data& data);
+    void readUsersCsv(Data& data);
+    void readMeasurementsCsv(Data& data);
 };
 
 #endif
