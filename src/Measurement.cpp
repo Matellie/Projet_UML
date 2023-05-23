@@ -26,20 +26,6 @@
 
 //----------------------------------------------------- Méthodes publiques
 
-double Concentration::GetLengthSquared()
-// Algorithme:
-//
-{
-  double ans = 0;
-
-  ans += std::pow(o3, 2);
-  ans += std::pow(no2, 2);
-  ans += std::pow(so2, 2);
-  ans += std::pow(pm10, 2);
-
-  return ans;
-} // ----- Fin de GetLengthSquared
-
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

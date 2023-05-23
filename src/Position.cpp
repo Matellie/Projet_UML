@@ -24,7 +24,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-double toRad( double degre )
+double Position::toRad( double degre )
 // Algorithme :
 //
 {
