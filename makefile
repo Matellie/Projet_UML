@@ -15,9 +15,12 @@ $(EXE) : $(OBJ)
 # Follow the examples
 obj/main.o : src/main.cpp
 obj/Concentration.o : src/Concentration.cpp src/Concentration.h
+obj/CsvReader.o: src/CsvReader.cpp src/CsvReader.h src/Data.h
+obj/Data.o: src/Data.cpp src/Data.h src/User.h src/Sensor.h src/Measurement.h
 obj/Measurement.o : src/Measurement.cpp src/Measurement.h src/Concentration.h
-obj/CsvReader.o: src/CsvReader.cpp src/CsvReader.h
-obj/Data.o: src/Data.cpp src/Data.h
+obj/Position.o: src/Position.cpp src/Position.h
+obj/Sensor.o: src/Sensor.cpp src/Sensor.h src/Position.h src/Measurement.h src/User.h
+obj/User.o: src/User.cpp src/User.h
 
 $(OBJ) :
 	echo $(OBJ)

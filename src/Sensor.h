@@ -11,8 +11,8 @@
 #define SENSOR_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <string>
 #include <unordered_map>
+#include <string>
 
 #include "Measurement.h"
 #include "Position.h"

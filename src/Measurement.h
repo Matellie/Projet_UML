@@ -8,7 +8,7 @@
 *************************************************************************/
 
 //---------- Interface de la classe <Position> (fichier Position.h) ----------------
-#if ! defined ( MEASUREMENT_H )
+#if !defined( MEASUREMENT_H )
 #define MEASUREMENT_H
 
 //--------------------------------------------------- Interfaces utilisées

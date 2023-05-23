@@ -36,9 +36,9 @@ class Data
 
 public:
 //----------------------------------------------------- Attributs publics
-unordered_map<string, User*> users;
-unordered_map<string, Sensor*> sensors;
-vector<Measurement*> measurements;
+    unordered_map<string, User*> users;
+    unordered_map<string, Sensor*> sensors;
+    vector<Measurement*> measurements;
 
 //----------------------------------------------------- Méthodes publiques
 
