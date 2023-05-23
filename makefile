@@ -1,6 +1,6 @@
-INT = src/$(wildcard *.h)
+INT = $(wildcard src/*.h)
 SRC = $(INT:.h=.cpp) src/main.cpp
-OBJ = $(INT:.h=.o) main.o
+OBJ = $(INT:src/%.h=obj/%.o) obj/main.o
 LIBS = -lm
 CPPFLAGS = -ansi -pedantic -Wall -std=c++11 -g #-DMAP
 LDFLAGS = 
@@ -13,12 +13,15 @@ $(EXE) : $(OBJ)
 
 # Add dependencies for obj files
 # Follow the examples
-#Catalogue.o : Catalogue.cpp Catalogue.h Trajet.h TrajetSimple.h TrajetCompose.h ListeTrajet.h Node.h
-#main.o : main.cpp Catalogue.h TrajetSimple.h TrajetCompose.h
+obj/main.o : src/main.cpp
+obj/Concentration.o : src/Concentration.cpp src/Concentration.h
+obj/Measurement.o : src/Measurement.cpp src/Measurement.h src/Concentration.h
+obj/CsvReader.o: src/CsvReader.cpp src/CsvReader.h
+obj/Data.o: src/Data.cpp src/Data.h
 
 $(OBJ) :
 	echo $(OBJ)
-	g++ -c $(CPPFLAGS) $<
+	g++ -c -o $@ $(CPPFLAGS) $<
 
 clean :
 	$(RM) -f $(EXE) $(OBJ) core
