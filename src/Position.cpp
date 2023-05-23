@@ -75,7 +75,7 @@ Position::Position ( )
 } //----- Fin de Position
 
 
-Position ( double latitude, double longitude )
+Position::Position ( double latitude, double longitude )
 : latitude(latitude), longitude(longitude)
 // Algorithme :
 //
