@@ -1,22 +1,24 @@
 /*************************************************************************
-                           Sensor  -  description
-                             -------------------
-    début                : $23/05/2023$
-    copyright            : (C) $2023$ par $AirWatcher$
-    e-mail               : $mathieu.habran@insa-lyon.fr$
+						   Sensor  -  description
+							 -------------------
+	début                : $23/05/2023$
+	copyright            : (C) $2023$ par $AirWatcher$
+	e-mail               : $mathieu.habran@insa-lyon.fr$
 *************************************************************************/
 
 //---------- Interface de la classe <Sensor> (fichier Sensor.h) -------------
-#if !defined( SENSOR_H )
+#if !defined(SENSOR_H)
 #define SENSOR_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
-#include <vector>
+#include <unordered_map>
 
 #include "Measurement.h"
 #include "Position.h"
 #include "User.h"
+
+using namespace std;
 
 //------------------------------------------------------------- Constantes
 
@@ -27,19 +29,17 @@
 // desc
 //------------------------------------------------------------------------
 
-using namespace std;
+class Sensor
+{
 
-class Sensor{
-	
-//----------------------------------------------------------------- PUBLIC
+	//----------------------------------------------------------------- PUBLIC
 
 public:
-
 	//----------------------------------------------------- Attributs publics
-	string id; 
-	User* user;
-	Position position;	
-	unordered_map <time_t, Measurement*> measurements;
+	string id;
+	User *user;
+	Position position;
+	unordered_map<time_t, Measurement *> measurements;
 
 	//----------------------------------------------------- Méthodes publiques
 
@@ -57,7 +57,7 @@ public:
 	//
 	// Contrat :
 	//
-	
+
 	//------------------------------------------------------------------ PRIVE
 
 protected:
