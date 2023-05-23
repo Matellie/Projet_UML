@@ -13,6 +13,7 @@
 //-------------------------------------------------------- Include système
 
 #include <string>
+#include <iostream>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -31,10 +32,16 @@ Sensor::Sensor(string id, double latitude, double longitude){
 
 	id = identifiant;
 	position = new Position(latitude, longitude);
+	#ifdef MAP
+		cout << "Appel au constructeur de <Sensor>" << endl;
+	#endif
 } //----- Fin de Sensor
 
 ~Sensor::Sensor(){
 	delete Position;
+	#ifdef MAP
+		cout << "Appel au destructeur de <Sensor>" << endl;
+	#endif
 } //----- Fin de Sensor
 
 //------------------------------------------------------------------ PRIVE

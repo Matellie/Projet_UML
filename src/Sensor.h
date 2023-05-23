@@ -35,6 +35,10 @@ public:
 
 //----------------------------------------------------- Méthodes publiques
 
+//------------------------------------------------- Surcharge d'opérateurs
+
+//-------------------------------------------- Constructeurs - destructeur
+
 	
 	Sensor(string id, double latitude, double longitude);
 	// Mode d'emploi :
