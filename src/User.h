@@ -11,9 +11,12 @@
 #define USER_H
 
 //--------------------------------------------------- Interfaces utilisées
-using namespace std;
 #include <stdlib.h>
 #include <vector>
+#include <string>
+using namespace std;
+
+class Sensor;
 
 //------------------------------------------------------------- Constantes
 
