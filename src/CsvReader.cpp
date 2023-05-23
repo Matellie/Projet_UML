@@ -37,9 +37,9 @@ void CsvReader::readSensorsCsv(Data *data)
     string id, strLatitude, strLongitude, tmp;
     double latitude, longitude;
     Sensor *sensor;
+    getline(streamSensors, id, ';');
     while (!streamSensors.eof())
     {
-        getline(streamSensors, id, ';');
         getline(streamSensors, strLatitude, ';');
         latitude = stof(strLatitude);
         getline(streamSensors, strLongitude, ';');
@@ -47,6 +47,7 @@ void CsvReader::readSensorsCsv(Data *data)
         getline(streamSensors, tmp);
         sensor = new Sensor(id, latitude, longitude);
         data->sensors.insert({id, sensor});
+        getline(streamSensors, id, ';');
     }
 }
 
@@ -91,8 +92,8 @@ void CsvReader::readMeasurementsCsv(Data *data)
     }
     string strTimestamp, idSensor, attributeId, strValue, tmp;
 
-    time_t timestamp;
-    struct tm tm;
+    time_t timestamp  =0;
+    //struct tm tm;
 
     Concentration concentration;
     Measurement *measurement;
@@ -100,8 +101,8 @@ void CsvReader::readMeasurementsCsv(Data *data)
     while (!streamUsers.eof())
     {
         getline(streamUsers, strTimestamp, ';');
-        strptime(strTimestamp.c_str(), "%Y-%m-%d %H:%M:%S", &tm);
-        timestamp = mktime(&tm);
+        /*strptime(strTimestamp.c_str(), "%Y-%m-%d %H:%M:%S", &tm);
+        timestamp = mktime(&tm);*/
         getline(streamUsers, idSensor, ';');
         getline(streamUsers, tmp, ';');
         getline(streamUsers, strValue, ';');
