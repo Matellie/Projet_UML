@@ -47,34 +47,8 @@ double Position::distanceTo ( Position position )
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Position & Position::operator = ( const Position & unPosition )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
-Position::Position ( const Position & unPosition )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Position>" << endl;
-#endif
-} //----- Fin de Position (constructeur de copie)
-
-
-Position::Position ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <Position>" << endl;
-#endif
-} //----- Fin de Position
-
-
 Position::Position ( double latitude, double longitude )
 : latitude(latitude), longitude(longitude)
 // Algorithme :

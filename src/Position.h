@@ -46,26 +46,8 @@ double longitude;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Position & operator = ( const Position & unPosition );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
 
 //-------------------------------------------- Constructeurs - destructeur
-    Position ( const Position & unPosition );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    Position ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
     Position ( double latitude, double longitude );
     // Mode d'emploi :
     //

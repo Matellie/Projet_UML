@@ -44,20 +44,8 @@ vector<Measurement*> measurements;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Data & operator = ( const Data & unData );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
 
 //-------------------------------------------- Constructeurs - destructeur
-    Data ( const Data & unData );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
     Data ( );
     // Mode d'emploi :
     //
