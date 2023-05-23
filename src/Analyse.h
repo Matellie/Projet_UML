@@ -1,95 +1,88 @@
-
 /*************************************************************************
-                           Position  -  description
+                           Data  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Position> (fichier Position.h) ----------------
-#if ! defined ( CONCENTRATION_H )
-#define CONCENTRATION_H
+//---------- Interface de la classe <Analyse> (fichier Analyse.h) ----------------
+#if ! defined ( ANALYSE_H )
+#define ANALYSE_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <unordered_map>
+#include <string>
+using namespace std;
+
+#include "Data.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Concentration>
+// Rôle de la classe <Analyse>
 //
 //
 //------------------------------------------------------------------------
 
-class Concentration
+class Analyse
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Attributs publics
-  double o3;
-  double so2;
-  double no2;
-  double pm10;
+Data data;
 
 //----------------------------------------------------- Méthodes publiques
 
-double GetLengthSquared();
-// Mode d'emploi :
-//
-// Contrat :
-//
+int GetAirQualityFromConcentration(Concentration const& concentration);
+  // Mode d'emploi:
+  //
+  // Contrat:
+  //
+
+int AirQualityAverage(Position center, double r, time_t begin, time_t end);
+  // Mode d'emploi:
+  //
+  // Contrat:
+  //
+
+vector<int> SensorSimilarity(Measurement refMeasure);
+  // Mode d'emploi:
+  //
+  // Contrat:
+  //
 
 //------------------------------------------------- Surcharge d'opérateurs
-Concentration operator-(Concentration const& concentration);
-// Mode d'emploi :
-//
-// Contrat :
-//
-
-Concentration& operator/=(int n);
-// Mode d'emploi :
-//
-// Contrat :
-//
-
-Concentration& operator +=(Concentration const& concentration);
-// Mode d'emploi :
-//
-// Contrat :
-//
-
 
 //-------------------------------------------- Constructeurs - destructeur
-  Concentration();
-  // Mode d'emploi :
-  //
-  // Contrat :
-  //
+    Analyse( );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
-  Concentration(double pO3, double pSo2, double pNo2, double pPm10);
-  // Mode d'emploi :
-  //
-  // Contrat :
-  //
-
-  ~Concentration();
-  // Mode d'emploi :
-  //
-  // Contrat :
-  //
+    ~Analyse( );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
 //------------------------------------------------------------------ PRIVE
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-
+  int GetIndexGas(double value, vector<int>& levels);
 //----------------------------------------------------- Attributs protégés
-
+  vector<int> OzoneLevels;
+  vector<int> SulfurLevels;
+  vector<int> NitrogenLevels;
+  vector<int> ParticleLevels;
 };
 
-//-------------------------------- Autres définitions dépendantes de <Position>
+//-------------------------------- Autres définitions dépendantes de <Data>
 
-#endif // POSITION_H
+#endif // DATA_H
+
