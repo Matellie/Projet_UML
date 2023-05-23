@@ -27,18 +27,19 @@ using namespace std;
 
 class User
 {
+public:
 	//----------------------------------------------------------------- PUBLIC
-	typedef enum {
+	typedef enum
+	{
 		GOUV,
 		LAMBDA,
 		PROVIDER
 	} Clearance;
 
-public:
 	//----------------------------------------------------- Attributs publics
 	string id;
 	bool reliable;
-	vector<Sensor*> sensors;
+	vector<Sensor *> sensors;
 	Clearance clearance;
 
 	//----------------------------------------------------- Méthodes publiques
@@ -46,7 +47,7 @@ public:
 	//------------------------------------------------- Surcharge d'opérateurs
 
 	//-------------------------------------------- Constructeurs - destructeur
-	User( string id, Clearance clearance );
+	User(string id, Clearance clearance);
 	// Mode d'emploi :
 	//
 	// Contrat :
