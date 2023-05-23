@@ -1,45 +1,52 @@
 /*************************************************************************
-                           Data  -  description
+                           Position  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Data> (fichier Data.h) ----------------
-#if ! defined ( DATA_H )
-#define DATA_H
+//---------- Interface de la classe <Position> (fichier Position.h) ----------------
+#if ! defined ( POSITION_H )
+#define POSITION_H
 
 //--------------------------------------------------- Interfaces utilisées
-using namespace std;
-#include <stdlib.h>
-//#include "User.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Data>
+// Rôle de la classe <Position>
 //
 //
 //------------------------------------------------------------------------
 
-class Data
+class Position
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Attributs publics
-//unordered_map<string id, User* user> users;
-//unordered_map<string id, Sensor* sensor> sensors;
-//vector<Measurement*> measurements;
+double latitude;
+double longitude;
 
 //----------------------------------------------------- Méthodes publiques
+    double toRad ( double degre );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    double distanceTo ( Position position );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Data & operator = ( const Data & unData );
+    Position & operator = ( const Position & unPosition );
     // Mode d'emploi :
     //
     // Contrat :
@@ -47,19 +54,25 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Data ( const Data & unData );
+    Position ( const Position & unPosition );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Data ( );
+    Position ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    ~Data ( );
+    Position ( double latitude, double longitude );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    ~Position ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -74,7 +87,7 @@ protected:
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Data>
+//-------------------------------- Autres définitions dépendantes de <Position>
 
-#endif // DATA_H
+#endif // POSITION_H
 
