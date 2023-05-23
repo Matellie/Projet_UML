@@ -49,6 +49,18 @@ Concentration Concentration::operator-(Concentration const& concentration)
   );
 } // Fin de l'opérateur -
 
+Concentration& Concentration::operator+=(Concentration const& concentration)
+// Algorithme:
+// 
+{
+  o3 += concentration.o3;
+  so2 += concentration.so2;
+  no2 += concentration.no2;
+  pm10 += concentration.pm10;
+
+  return *this;
+} // Fin de l'opérateur -
+
 Concentration& Concentration::operator/=(int n)
 // Agorithme:
 //

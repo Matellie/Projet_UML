@@ -11,7 +11,7 @@
 #define SENSOR_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <unordered_map>
+#include <map>
 #include <string>
 
 #include "Measurement.h"
@@ -39,7 +39,7 @@ public:
 	string id;
 	User *user;
 	Position position;
-	unordered_map<time_t, Measurement *> measurements;
+	map<time_t, Measurement *> measurements;
 
 	//----------------------------------------------------- Méthodes publiques
 
