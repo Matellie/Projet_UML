@@ -13,6 +13,9 @@
 //--------------------------------------------------- Interfaces utilisées
 using namespace std;
 #include <stdlib.h>
+#include <unordered_map>
+#include <vector>
+
 //#include "User.h"
 
 //------------------------------------------------------------- Constantes
