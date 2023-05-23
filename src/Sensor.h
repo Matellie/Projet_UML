@@ -7,7 +7,7 @@
 *************************************************************************/
 
 //---------- Interface de la classe <Sensor> (fichier Sensor.h) -------------
-#if ! defined ( SENSOR_H )
+#if !defined( SENSOR_H )
 #define SENSOR_H
 
 //--------------------------------------------------- Interfaces utilisées
@@ -16,6 +16,8 @@
 
 #include "Measurement.h"
 #include "Position.h"
+#include "User.h"
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -33,25 +35,36 @@ class Sensor{
 
 public:
 
-//----------------------------------------------------- Méthodes publiques
-
-//------------------------------------------------- Surcharge d'opérateurs
-
-//-------------------------------------------- Constructeurs - destructeur
-
-	
-	Sensor(string id, double latitude, double longitude);
-	// Mode d'emploi :
-
-	~Sensor();
-	// Mode d'emploi :
-	
+	//----------------------------------------------------- Attributs publics
 	string id; 
 	User* user;
 	Position position;	
 	vector <Measurement*> measurements;
 
-}
+	//----------------------------------------------------- Méthodes publiques
+
+	//------------------------------------------------- Surcharge d'opérateurs
+
+	//-------------------------------------------- Constructeurs - destructeur
+	Sensor(string id, double latitude, double longitude);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	~Sensor();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+	
+	//------------------------------------------------------------------ PRIVE
+
+protected:
+	//----------------------------------------------------- Méthodes protégées
+
+	//----------------------------------------------------- Attributs protégés
+};
 
 //------------------------------- Autres définitions dépendantes de <Sensor>
 
