@@ -130,10 +130,7 @@ void InterfaceConsole::actionMenu()
 			break;
 
 		case 4:
-			if (clearance == InterfaceConsole::Clearance::GOUV)
-			{
-				// TODO verifier capteur
-			}
+			// TODO verifier capteur
 			break;
 
 		case 0:
