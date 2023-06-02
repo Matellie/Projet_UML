@@ -82,8 +82,22 @@ protected:
     //
 
     void mainMenu();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
     void connectUser();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
     void actionMenu();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
     //----------------------------------------------------- Attributs protégés
     string UserId;
