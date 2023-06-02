@@ -99,6 +99,12 @@ protected:
     // Contrat :
     //
 
+    void analyseQualiteZone();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
     //----------------------------------------------------- Attributs protégés
     string UserId;
     Clearance clearance;
