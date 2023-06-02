@@ -126,11 +126,13 @@ void InterfaceConsole::actionMenu()
 			else
 			{
 				// TODO impact purificateur
+				cout << "cette fonctionnalite n'est pas implémentée" << endl;
 			}
 			break;
 
 		case 4:
 			// TODO verifier capteur
+			cout << "cette fonctionnalite n'est pas implémentée" << endl;
 			break;
 
 		case 0:
