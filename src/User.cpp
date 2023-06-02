@@ -28,7 +28,7 @@ using namespace std;
 
 //-------------------------------------------- Constructeurs - destructeur
 User::User ( string id, Clearance clearance )
-: id(id), reliable(true), clearance(clearance)
+: id(id), reliable(true), clearance(clearance), points(0)
 // Algorithme :
 //
 {

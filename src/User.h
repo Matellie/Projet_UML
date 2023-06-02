@@ -46,6 +46,7 @@ public:
 	bool reliable;
 	vector<Sensor *> sensors;
 	Clearance clearance;
+	int points;
 
 	//----------------------------------------------------- Méthodes publiques
 
