@@ -62,7 +62,7 @@ void CsvReader::readUsersCsv(Data *data)
         unordered_map<string, User *>::iterator itUser = data->users.find(idUser);
         if (itUser == data->users.end())
         {
-            user = new User(idUser, User::Clearance::LAMBDA);
+            user = new User(idUser);
             data->users.insert({idUser, user});
         }
         user = data->users.at(idUser);
