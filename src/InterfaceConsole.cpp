@@ -11,6 +11,7 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
+#include <ostream>
 using namespace std;
 #include <iostream>
 #include <string>
@@ -197,5 +198,5 @@ void InterfaceConsole::analyseComparaisonCapteur(){
 
   vector<string> result = analyse.SensorSimilarity(itMeasure->second);
   for(auto s : result)
-    cout << s << endl;
+    cout << *(analyse.data->sensors[s]->measurements[timestamp]) << endl;
 }

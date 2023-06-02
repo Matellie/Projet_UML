@@ -14,6 +14,9 @@
 //--------------------------------------------------- Interfaces utilisées
 
 #include <time.h>
+#include <iostream>
+
+using namespace std;
 
 #include "Concentration.h"
 
@@ -40,9 +43,8 @@ public:
   Concentration concentration;
 
 //----------------------------------------------------- Méthodes publiques
-
+  friend ostream& operator<<(ostream& os, const Measurement& measurement);
 //------------------------------------------------- Surcharge d'opérateurs
-
 
 //-------------------------------------------- Constructeurs - destructeur
   Measurement(Sensor* pSensor, time_t pTimestamp, Concentration pConcentration);
@@ -56,6 +58,7 @@ public:
   //
   // Contrat :
   //
+
 
 //------------------------------------------------------------------ PRIVE
 
