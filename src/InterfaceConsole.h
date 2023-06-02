@@ -81,6 +81,7 @@ protected:
     //----------------------------------------------------- Attributs protégés
     string UserId;
     Clearance clearance;
+    Analyse analyse;
 };
 
 //-------------------------------- Autres définitions dépendantes de <InterfaceConsole>
