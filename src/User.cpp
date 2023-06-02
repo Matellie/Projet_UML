@@ -27,8 +27,8 @@ using namespace std;
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-User::User ( string id, Clearance clearance )
-: id(id), reliable(true), clearance(clearance), points(0)
+User::User ( string id)
+: id(id), reliable(true), points(0)
 // Algorithme :
 //
 {

@@ -34,18 +34,11 @@ class User
 //----------------------------------------------------------------- PUBLIC
 
 public:
-	typedef enum
-	{
-		GOUV,
-		LAMBDA,
-		PROVIDER
-	} Clearance;
 
 	//----------------------------------------------------- Attributs publics
 	string id;
 	bool reliable;
 	vector<Sensor *> sensors;
-	Clearance clearance;
 	int points;
 
 	//----------------------------------------------------- Méthodes publiques
@@ -53,7 +46,7 @@ public:
 	//------------------------------------------------- Surcharge d'opérateurs
 
 	//-------------------------------------------- Constructeurs - destructeur
-	User(string id, Clearance clearance);
+	User(string id);
 	// Mode d'emploi :
 	//
 	// Contrat :
