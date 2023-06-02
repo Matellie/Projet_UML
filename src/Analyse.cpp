@@ -71,17 +71,17 @@ int Analyse::AirQualityAverage(Position center, double r, time_t begin, time_t e
   return GetAirQualityFromConcentration(average);
 }
 
-vector<string> Analyse::SensorSimilarity(Measurement refMeasure)
+vector<string> Analyse::SensorSimilarity(Measurement* refMeasure)
 // Algorithm:
 //
 {
   vector<pair<float, string>> scores;
   for(auto sensor : data->sensors){
-    auto it = sensor.second->measurements.find(refMeasure.timestamp);
+    auto it = sensor.second->measurements.find(refMeasure->timestamp);
     // If the measurement was found
     if(it != sensor.second->measurements.end()){
       Measurement& measure = *(it->second);
-      Concentration delta = measure.concentration - refMeasure.concentration;
+      Concentration delta = measure.concentration - refMeasure->concentration;
       float myScore = delta.GetLengthSquared();
       scores.push_back({myScore, measure.sensor->id});
     }

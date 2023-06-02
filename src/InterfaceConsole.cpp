@@ -72,37 +72,39 @@ int InterfaceConsole::readChoice(string invite, int max)
 void InterfaceConsole::mainMenu()
 {
 	bool exit = false;
-	while (!exit)
-	{
-		switch (readChoice("Menu Air Watcher\n1:se connecter\n0: quitter", 1))
-		{
-		case 1:
-			connectUser();
-			actionMenu();
-			break;
+  switch (readChoice("Menu Air Watcher\n1:se connecter\n0: quitter", 1))
+  {
+  case 1:
+    connectUser();
+    break;
 
-		case 0:
-			exit = true;
-			break;
-		}
-	}
+  case 0:
+    exit = true;
+    break;
+  }
+
+  if(exit)
+    return;
+
+  actionMenu();
 }
 
 void InterfaceConsole::actionMenu()
 {
 	bool exit = false;
 	int max = 3;
-	string menu = "1: Obtenir la qualité de l’air moyenne dans une zone circulaire\n2: Obtenir la similarité des capteurs par rapport à un capteur";
+  string s;
+	string menu = "1: Obtenir la qualité de l'air moyenne dans une zone circulaire\n2: Obtenir la similarité des capteurs par rapport à un capteur";
 	if (clearance == InterfaceConsole::Clearance::LAMBDA)
 	{
 		menu += "\n3: Consulter son nombre de points";
 	}
 	else
 	{
-		menu += "\n3: Obtenir l’impact d’un purificateur";
+		menu += "\n3: Obtenir l'impact d'un purificateur";
 		if (clearance == InterfaceConsole::Clearance::GOUV)
 		{
-			menu += "\n4: Assurer qu’un capteur n’est pas défectueux";
+			menu += "\n4: Assurer qu'un capteur n'est pas défectueux";
 			max = 4;
 		}
 	}
@@ -115,7 +117,7 @@ void InterfaceConsole::actionMenu()
 			break;
 
 		case 2:
-			// TODO similarite capteurs
+			analyseComparaisonCapteur();
 			break;
 
 		case 3:
@@ -163,4 +165,37 @@ void InterfaceConsole::connectUser()
 	}
 	cout << "enter your id:" << endl;
 	cin >> UserId;
+}
+
+void InterfaceConsole::analyseComparaisonCapteur(){
+  string id, s;
+  cout << "Quel est l'ID du capteur que vous voulez analyser?" << endl;
+  cin >> id;
+  getline(cin, s);
+  auto itSensor = analyse.data->sensors.find(id);
+  if(itSensor == analyse.data->sensors.end()){
+    cout << "Capteur non trouvé. Essayez à nouveau." << endl;
+    return;
+  }
+
+  Sensor* sensor = itSensor->second;
+
+  cout << "Donnez la date de la mesure de référence (YYYY-MM-dd hh:mm:ss)" << endl;
+  string dateString;
+  struct tm tm;
+  time_t timestamp;
+
+  getline(cin, dateString);
+  strptime(dateString.c_str(), "%Y-%m-%d %H:%M:%S", &tm);
+  timestamp = mktime(&tm);
+
+  auto itMeasure = sensor->measurements.find(timestamp);
+  if(itMeasure == sensor->measurements.end()){
+    cout << "Aucune mesure prise à l'instant donné" << endl;
+    return;
+  }
+
+  vector<string> result = analyse.SensorSimilarity(itMeasure->second);
+  for(auto s : result)
+    cout << s << endl;
 }

@@ -18,6 +18,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "User.h"
+#include "Analyse.h"
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -69,6 +70,12 @@ protected:
     };
     //----------------------------------------------------- Méthodes protégées
     int readChoice(string invite, int max);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    void analyseComparaisonCapteur();
     // Mode d'emploi :
     //
     // Contrat :

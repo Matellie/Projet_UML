@@ -49,7 +49,7 @@ int AirQualityAverage(Position center, double r, time_t begin, time_t end);
   // Contrat:
   //
 
-vector<string> SensorSimilarity(Measurement refMeasure);
+vector<string> SensorSimilarity(Measurement* refMeasure);
   // Mode d'emploi:
   //
   // Contrat:
