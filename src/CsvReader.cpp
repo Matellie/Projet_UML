@@ -6,15 +6,6 @@
 #include <fstream>
 
 using namespace std;
-
-CsvReader::CsvReader()
-{
-}
-
-CsvReader::~CsvReader()
-{
-}
-
 Data *CsvReader::readCsv()
 {
     Data *data = new Data;

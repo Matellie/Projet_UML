@@ -33,7 +33,7 @@ class Analyse
 
 public:
 //----------------------------------------------------- Attributs publics
-Data data;
+Data* data;
 
 //----------------------------------------------------- Méthodes publiques
 
@@ -49,7 +49,7 @@ int AirQualityAverage(Position center, double r, time_t begin, time_t end);
   // Contrat:
   //
 
-vector<int> SensorSimilarity(Measurement refMeasure);
+vector<string> SensorSimilarity(Measurement refMeasure);
   // Mode d'emploi:
   //
   // Contrat:

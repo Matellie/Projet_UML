@@ -5,15 +5,12 @@
 class CsvReader
 {
 public:
-    CsvReader();
-    ~CsvReader();
-
-    Data *readCsv();
+    static Data *readCsv();
 
 protected:
-    void readSensorsCsv(Data *data);
-    void readUsersCsv(Data *data);
-    void readMeasurementsCsv(Data *data);
+    static void readSensorsCsv(Data *data);
+    static void readUsersCsv(Data *data);
+    static void readMeasurementsCsv(Data *data);
 };
 
 #endif
