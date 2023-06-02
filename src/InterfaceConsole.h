@@ -7,7 +7,7 @@
 *************************************************************************/
 
 //---------- Interface de la classe <InterfaceConsole> (fichier InterfaceConsole.h) ----------------
-#if ! defined ( InterfaceConsole_H )
+#if !defined(InterfaceConsole_H)
 #define InterfaceConsole_H
 
 //---------------------------------------------------------------- INCLUDE
@@ -33,53 +33,56 @@ using namespace std;
 
 class InterfaceConsole
 {
-//----------------------------------------------------------------- PUBLIC
+    //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
-	void SetUser(User* u);
-	// Mode d'emploi :
-    //
-    // Contrat :
-    //
-	
-	void Start();
-	// Mode d'emploi :
-    //
-    // Contrat :
-    //
+    //----------------------------------------------------- Méthodes publiques
 
-//-------------------------------------------- Constructeurs - destructeur
-
-    InterfaceConsole (User* u);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-	
-	InterfaceConsole ();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-	
-    virtual ~InterfaceConsole ( );
+    void Start();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE
+    //-------------------------------------------- Constructeurs - destructeur
+
+    InterfaceConsole();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    virtual ~InterfaceConsole();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- Méthodes protégées
+    enum Clearance
+    {
+        GOUV,
+        PROVIDER,
+        LAMBDA
+    };
+    //----------------------------------------------------- Méthodes protégées
+    int readChoice(string invite, int max);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
-//----------------------------------------------------- Attributs protégés
-User * user;
+    void mainMenu();
+    void connectUser();
+    void actionMenu();
 
+    //----------------------------------------------------- Attributs protégés
+    string UserId;
+    Clearance clearance;
 };
 
 //-------------------------------- Autres définitions dépendantes de <InterfaceConsole>
 
 #endif // InterfaceConsole_H
-

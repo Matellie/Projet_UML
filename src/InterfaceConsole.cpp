@@ -1,9 +1,9 @@
 /*************************************************************************
-                           InterfaceConsole  -  description
-                             -------------------
-    début                : $23/05/2023$
-    copyright            : (C) $2023$ par $AirWatcher$
-    e-mail               : $mathieu.habran@insa-lyon.fr$
+						   InterfaceConsole  -  description
+							 -------------------
+	début                : $23/05/2023$
+	copyright            : (C) $2023$ par $AirWatcher$
+	e-mail               : $mathieu.habran@insa-lyon.fr$
 *************************************************************************/
 
 //---------- Réalisation de la classe <InterfaceConsole> (fichier InterfaceConsole.cpp) ------------
@@ -17,8 +17,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "InterfaceConsole.h"
-#include "User.h"
-//#include "Analyser.h"
+#include "Analyse.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -26,27 +25,11 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-void InterfaceConsole::SetUser(User* u)
-// Algorithme :
-//
-{
-	user = u;
-}
-
 void InterfaceConsole::Start()
 // Algorithme :
 //
 {
-	if(user == NULL){
-		cout << "user has not been set" << endl;
-	}else{
-		if(user->clearance == User::Clearance::LAMBDA){
-			cout << "lambda" << endl;
-		}else{
-			cout << "gouv/provider" << endl;			
-		}
-	}
-	
+	mainMenu();
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -57,34 +40,128 @@ InterfaceConsole::InterfaceConsole()
 // Algorithme :
 //
 {
-	user = NULL;
 #ifdef MAP
-    cout << "Appel au constructeur de <InterfaceConsole>" << endl;
+	cout << "Appel au constructeur de <InterfaceConsole>" << endl;
 #endif
 } //----- Fin de InterfaceConsole
-
-InterfaceConsole::InterfaceConsole(User* u) : user(u)
-// Algorithme :
-//
-{
-	#ifdef MAP
-    cout << "Appel à l'autre constructeur de <InterfaceConsole>" << endl;
-	#endif
-}
-
 
 InterfaceConsole::~InterfaceConsole()
 // Algorithme :
 //
 {
-	
+
 #ifdef MAP
-    cout << "Appel au destructeur de <InterfaceConsole>" << endl;
+	cout << "Appel au destructeur de <InterfaceConsole>" << endl;
 #endif
 } //----- Fin de ~InterfaceConsole
-
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
+int InterfaceConsole::readChoice(string invite, int max)
+{
+	int choice = -1;
+	while (choice < 0 || choice > max)
+	{
+		cout << invite << endl;
+		cin >> choice;
+	}
+	return choice;
+}
 
+void InterfaceConsole::mainMenu()
+{
+	bool exit = false;
+	while (!exit)
+	{
+		switch (readChoice("Menu Air Watcher\n1:se connecter\n0: quitter", 1))
+		{
+		case 1:
+			connectUser();
+			actionMenu();
+			break;
+
+		case 0:
+			exit = true;
+			break;
+		}
+	}
+}
+
+void InterfaceConsole::actionMenu()
+{
+	bool exit = false;
+	int max = 3;
+	string menu = "1: Obtenir la qualité de l’air moyenne dans une zone circulaire\n2: Obtenir la similarité des capteurs par rapport à un capteur";
+	if (clearance == InterfaceConsole::Clearance::LAMBDA)
+	{
+		menu += "\n3: Consulter son nombre de points";
+	}
+	else
+	{
+		menu += "\n3: Obtenir l’impact d’un purificateur";
+		if (clearance == InterfaceConsole::Clearance::GOUV)
+		{
+			menu += "\n4: Assurer qu’un capteur n’est pas défectueux";
+			max = 4;
+		}
+	}
+	while (!exit)
+	{
+		switch (readChoice(menu, max))
+		{
+		case 1:
+			// TODO Qualite dans une zone
+			break;
+
+		case 2:
+			// TODO similarite capteurs
+			break;
+
+		case 3:
+			if (clearance == InterfaceConsole::Clearance::LAMBDA)
+			{
+				// TODO consulter points
+			}
+			else
+			{
+				// TODO impact purificateur
+			}
+			break;
+
+		case 4:
+			if (clearance == InterfaceConsole::Clearance::GOUV)
+			{
+				// TODO verifier capteur
+			}
+			break;
+
+		case 0:
+			exit = true;
+			break;
+		}
+	}
+}
+
+void InterfaceConsole::connectUser()
+{
+	switch (readChoice("what is your clearance ?\n1: gouvernement\n2: provider\n3: lambda", 3))
+	{
+	case 1:
+		clearance = InterfaceConsole::Clearance::GOUV;
+		break;
+
+	case 2:
+		clearance = InterfaceConsole::Clearance::PROVIDER;
+		break;
+
+	case 3:
+		clearance = InterfaceConsole::Clearance::LAMBDA;
+		break;
+
+	default:
+		break;
+	}
+	cout << "enter your id:" << endl;
+	cin >> UserId;
+}
