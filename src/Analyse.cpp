@@ -63,6 +63,7 @@ int Analyse::AirQualityAverage(Position center, double r, time_t begin, time_t e
   }
 
   if(count == 0){
+    return -1;
     throw(runtime_error("Il faut avoir au moins un capteur dans la zone étudiée"));
   }
 
