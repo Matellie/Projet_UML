@@ -158,7 +158,7 @@ void InterfaceConsole::actionMenu()
 
 void InterfaceConsole::connectUser()
 {
-	switch (readChoice("what is your clearance ?\n1: gouvernement\n2: provider\n3: lambda", 3))
+	switch (readChoice("Quel est votre rôle ?\n1: gouvernement\n2: provider\n3: lambda", 3))
 	{
 	case 1:
 		clearance = InterfaceConsole::Clearance::GOUV;
