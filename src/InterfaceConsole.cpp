@@ -46,6 +46,16 @@ InterfaceConsole::InterfaceConsole()
 #endif
 } //----- Fin de InterfaceConsole
 
+InterfaceConsole::InterfaceConsole(const char *nomDossier)
+	: analyse(nomDossier)
+// Algorithme :
+//
+{
+#ifdef MAP
+	cout << "Appel au constructeur de <InterfaceConsole>" << endl;
+#endif
+} //----- Fin de InterfaceConsole
+
 InterfaceConsole::~InterfaceConsole()
 // Algorithme :
 //
@@ -242,11 +252,13 @@ void InterfaceConsole::analyseQualiteZone()
 	strftime(f, 50, "%d/%m/%Y à %H:%M:%S", &tm_fin);
 
 	cout << "analyse de la qualite de l'air moyenne dans un rayon de " << rayon << " autour de (" << lat << ';' << lon << ") entre le " << d << " et le " << f << endl;
-	int result = analyse.AirQualityAverage(Position(lat,lon),rayon,debut,fin);
-	if(result == -1) {
+	int result = analyse.AirQualityAverage(Position(lat, lon), rayon, debut, fin);
+	if (result == -1)
+	{
 		cout << "l'analyse a échoué, il n'y a pas de mesures correspondant a votre recherche" << endl;
-	} else {
+	}
+	else
+	{
 		cout << "qualite de l'air moyenne: " << result << endl;
 	}
-
 }

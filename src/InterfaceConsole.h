@@ -53,6 +53,12 @@ public:
     // Contrat :
     //
 
+    InterfaceConsole(const char *nomDossier);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
     virtual ~InterfaceConsole();
     // Mode d'emploi :
     //
@@ -106,7 +112,7 @@ protected:
     //
 
     //----------------------------------------------------- Attributs protégés
-    string UserId;
+    // string UserId;
     Clearance clearance;
     Analyse analyse;
 };

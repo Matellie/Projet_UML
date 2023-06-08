@@ -7,7 +7,7 @@
 *************************************************************************/
 
 //---------- Interface de la classe <Analyse> (fichier Analyse.h) ----------------
-#if ! defined ( ANALYSE_H )
+#if !defined(ANALYSE_H)
 #define ANALYSE_H
 
 //--------------------------------------------------- Interfaces utilisées
@@ -29,53 +29,59 @@ using namespace std;
 
 class Analyse
 {
-//----------------------------------------------------------------- PUBLIC
+  //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Attributs publics
-Data* data;
+  //----------------------------------------------------- Attributs publics
+  Data *data;
 
-//----------------------------------------------------- Méthodes publiques
+  //----------------------------------------------------- Méthodes publiques
 
-int GetAirQualityFromConcentration(Concentration const& concentration);
+  int GetAirQualityFromConcentration(Concentration const &concentration);
   // Mode d'emploi:
   //
   // Contrat:
   //
 
-int AirQualityAverage(Position center, double r, time_t begin, time_t end);
+  int AirQualityAverage(Position center, double r, time_t begin, time_t end);
   // Mode d'emploi:
   //
   // Contrat:
   //
 
-vector<string> SensorSimilarity(Measurement* refMeasure);
+  vector<string> SensorSimilarity(Measurement *refMeasure);
   // Mode d'emploi:
   //
   // Contrat:
   //
 
-//------------------------------------------------- Surcharge d'opérateurs
+  //------------------------------------------------- Surcharge d'opérateurs
 
-//-------------------------------------------- Constructeurs - destructeur
-    Analyse( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+  //-------------------------------------------- Constructeurs - destructeur
+  Analyse();
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-    ~Analyse( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+  Analyse(const char *nomDossier);
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-//------------------------------------------------------------------ PRIVE
+  ~Analyse();
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
+
+  //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- Méthodes protégées
-  int GetIndexGas(double value, vector<int>& levels);
-//----------------------------------------------------- Attributs protégés
+  //----------------------------------------------------- Méthodes protégées
+  int GetIndexGas(double value, vector<int> &levels);
+  //----------------------------------------------------- Attributs protégés
   vector<int> OzoneLevels;
   vector<int> SulfurLevels;
   vector<int> NitrogenLevels;
@@ -85,4 +91,3 @@ protected:
 //-------------------------------- Autres définitions dépendantes de <Data>
 
 #endif // DATA_H
-

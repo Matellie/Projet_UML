@@ -6,23 +6,25 @@
 #include <fstream>
 
 using namespace std;
-Data *CsvReader::readCsv()
+Data *CsvReader::readCsv(const char *nomDossier)
 {
     Data *data = new Data;
-    readSensorsCsv(data);
-    readUsersCsv(data);
-    readMeasurementsCsv(data);
+    readSensorsCsv(data, nomDossier);
+    readUsersCsv(data, nomDossier);
+    readMeasurementsCsv(data, nomDossier);
 
     return data;
 }
 
-void CsvReader::readSensorsCsv(Data *data)
+void CsvReader::readSensorsCsv(Data *data, const char *nomDossier)
 {
     ifstream streamSensors;
-    streamSensors.open("data/sensors.csv");
+    string nomFichier(nomDossier);
+    nomFichier += "/sensors.csv";
+    streamSensors.open(nomFichier.c_str());
     if (streamSensors.fail())
     {
-        cerr << "can't open sensors.csv" << endl;
+        cerr << "can't open " << nomFichier << endl;
         exit(1);
     }
     string id, strLatitude, strLongitude, tmp;
@@ -42,13 +44,15 @@ void CsvReader::readSensorsCsv(Data *data)
     }
 }
 
-void CsvReader::readUsersCsv(Data *data)
+void CsvReader::readUsersCsv(Data *data, const char *nomDossier)
 {
     ifstream streamUsers;
-    streamUsers.open("data/users.csv");
+    string nomFichier(nomDossier);
+    nomFichier += "/users.csv";
+    streamUsers.open(nomFichier.c_str());
     if (streamUsers.fail())
     {
-        cerr << "can't open users.csv" << endl;
+        cerr << "can't open " << nomFichier << endl;
         exit(1);
     }
     string idUser, idSensor, tmp;
@@ -72,54 +76,56 @@ void CsvReader::readUsersCsv(Data *data)
     }
 }
 
-void CsvReader::readMeasurementsCsv(Data *data)
+void CsvReader::readMeasurementsCsv(Data *data, const char *nomDossier)
 {
-    ifstream streamUsers;
-    streamUsers.open("data/measurements.csv");
-    if (streamUsers.fail())
+    ifstream streamMeasurements;
+    string nomFichier(nomDossier);
+    nomFichier += "/measurements.csv";
+    streamMeasurements.open(nomFichier.c_str());
+    if (streamMeasurements.fail())
     {
-        cerr << "can't open measurements.csv" << endl;
+        cerr << "can't open " << nomFichier << endl;
         exit(1);
     }
     string strTimestamp, idSensor, attributeId, strValue, tmp;
 
-    time_t timestamp  =0;
+    time_t timestamp = 0;
     struct tm tm;
 
     Concentration concentration;
     Measurement *measurement;
-    Sensor* sensor;
-    while (!streamUsers.eof())
+    Sensor *sensor;
+    while (!streamMeasurements.eof())
     {
-        getline(streamUsers, strTimestamp, ';');
+        getline(streamMeasurements, strTimestamp, ';');
         strptime(strTimestamp.c_str(), "%Y-%m-%d %H:%M:%S", &tm);
         timestamp = mktime(&tm);
-        getline(streamUsers, idSensor, ';');
-        getline(streamUsers, tmp, ';');
-        getline(streamUsers, strValue, ';');
+        getline(streamMeasurements, idSensor, ';');
+        getline(streamMeasurements, tmp, ';');
+        getline(streamMeasurements, strValue, ';');
         concentration.o3 = stol(strValue);
-        getline(streamUsers, tmp);
+        getline(streamMeasurements, tmp);
 
-        getline(streamUsers, tmp, ';');
-        getline(streamUsers, tmp, ';');
-        getline(streamUsers, tmp, ';');
-        getline(streamUsers, strValue, ';');
+        getline(streamMeasurements, tmp, ';');
+        getline(streamMeasurements, tmp, ';');
+        getline(streamMeasurements, tmp, ';');
+        getline(streamMeasurements, strValue, ';');
         concentration.so2 = stol(strValue);
-        getline(streamUsers, tmp);
+        getline(streamMeasurements, tmp);
 
-        getline(streamUsers, tmp, ';');
-        getline(streamUsers, tmp, ';');
-        getline(streamUsers, tmp, ';');
-        getline(streamUsers, strValue, ';');
+        getline(streamMeasurements, tmp, ';');
+        getline(streamMeasurements, tmp, ';');
+        getline(streamMeasurements, tmp, ';');
+        getline(streamMeasurements, strValue, ';');
         concentration.no2 = stol(strValue);
-        getline(streamUsers, tmp);
+        getline(streamMeasurements, tmp);
 
-        getline(streamUsers, tmp, ';');
-        getline(streamUsers, tmp, ';');
-        getline(streamUsers, tmp, ';');
-        getline(streamUsers, strValue, ';');
+        getline(streamMeasurements, tmp, ';');
+        getline(streamMeasurements, tmp, ';');
+        getline(streamMeasurements, tmp, ';');
+        getline(streamMeasurements, strValue, ';');
         concentration.pm10 = stol(strValue);
-        getline(streamUsers, tmp);
+        getline(streamMeasurements, tmp);
 
         sensor = data->sensors.at(idSensor);
         measurement = new Measurement(sensor, timestamp, concentration);
