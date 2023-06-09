@@ -208,10 +208,6 @@ void InterfaceConsole::analyseComparaisonCapteur()
 	timestamp = mktime(&tm);
 
 	auto itMeasure = sensor->measurements.find(timestamp);
-  cout << timestamp << endl;
-  for(auto m : sensor->measurements){
-    cout << m.first << endl;
-  }
 	if (itMeasure == sensor->measurements.end())
 	{
 		cout << "Aucune mesure prise à l'instant donné" << endl;
