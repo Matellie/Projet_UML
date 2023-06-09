@@ -15,6 +15,7 @@
 using namespace std;
 #include <iostream>
 #include <string>
+#include <time.h>
 
 //------------------------------------------------------ Include personnel
 #include "InterfaceConsole.h"
@@ -211,7 +212,10 @@ void InterfaceConsole::analyseComparaisonCapteur()
 		return;
 	}
 
+  clock_t t = clock();
 	vector<string> result = analyse.SensorSimilarity(itMeasure->second);
+  float d = ((double) (clock() - t)) / CLOCKS_PER_SEC;
+  printf("Execution time = %.3fs\n\n", d);
 	for (auto s : result)
 		cout << *(analyse.data->sensors[s]->measurements[timestamp]) << endl;
 }
