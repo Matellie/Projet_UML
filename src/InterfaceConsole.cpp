@@ -16,6 +16,7 @@ using namespace std;
 #include <iostream>
 #include <string>
 #include <time.h>
+#include <cstring>
 
 //------------------------------------------------------ Include personnel
 #include "InterfaceConsole.h"
@@ -199,6 +200,7 @@ void InterfaceConsole::analyseComparaisonCapteur()
 	cout << "Donnez la date de la mesure de référence (YYYY-MM-dd hh:mm:ss)" << endl;
 	string dateString;
 	struct tm tm;
+  memset(&tm, 0, sizeof(tm));
 	time_t timestamp;
 
 	getline(cin, dateString);
@@ -206,6 +208,10 @@ void InterfaceConsole::analyseComparaisonCapteur()
 	timestamp = mktime(&tm);
 
 	auto itMeasure = sensor->measurements.find(timestamp);
+  cout << timestamp << endl;
+  for(auto m : sensor->measurements){
+    cout << m.first << endl;
+  }
 	if (itMeasure == sensor->measurements.end())
 	{
 		cout << "Aucune mesure prise à l'instant donné" << endl;
@@ -241,6 +247,7 @@ void InterfaceConsole::analyseQualiteZone()
 
 	string debutString;
 	struct tm tm_debut;
+  memset(&tm_debut, 0, sizeof(tm));
 	time_t debut;
 	char d[50];
 	cout << "date de début (YYYY-MM-dd hh:mm:ss):" << endl;
@@ -251,6 +258,7 @@ void InterfaceConsole::analyseQualiteZone()
 
 	string finString;
 	struct tm tm_fin;
+  memset(&tm_fin, 0, sizeof(tm));
 	time_t fin;
 	char f[50];
 	cout << "date de fin (YYYY-MM-dd hh:mm:ss):" << endl;

@@ -4,6 +4,7 @@
 #include "Measurement.h"
 #include <iostream>
 #include <fstream>
+#include <cstring>
 
 using namespace std;
 Data *CsvReader::readCsv(const char *nomDossier)
@@ -91,6 +92,7 @@ void CsvReader::readMeasurementsCsv(Data *data, const char *nomDossier)
 
     time_t timestamp = 0;
     struct tm tm;
+    memset(&tm, 0, sizeof(tm));
 
     Concentration concentration;
     Measurement *measurement;
