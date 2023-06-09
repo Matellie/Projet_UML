@@ -52,12 +52,11 @@ int Analyse::AirQualityAverage(Position center, double r, time_t begin, time_t e
 
   for (auto sensor : data->sensors)
   {
-    if (center.distanceTo(sensor.second->position))
+    if (center.distanceTo(sensor.second->position) <= r)
     {
-      auto endIterator = sensor.second->measurements.upper_bound(begin);
-      for (auto measure = sensor.second->measurements.lower_bound(begin);
-           measure != endIterator;
-           measure++)
+      cout << sensor.second->id << endl;
+      auto endIterator = sensor.second->measurements.upper_bound(end);
+      for (auto measure = sensor.second->measurements.lower_bound(begin); measure != endIterator; measure++)
       {
         count++;
         average += measure->second->concentration;

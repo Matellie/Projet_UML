@@ -129,7 +129,16 @@ void CsvReader::readMeasurementsCsv(Data *data, const char *nomDossier)
 
         sensor = data->sensors.at(idSensor);
         measurement = new Measurement(sensor, timestamp, concentration);
+
+        cout << measurement->sensor->id << ":" <<
+        " timestamp=" << measurement->timestamp <<
+        " c(NO2)=" << measurement->concentration.no2 <<
+        " c(O3)=" << measurement->concentration.o3 <<
+        " c(SO2)=" << measurement->concentration.so2 <<
+        " c(PM10)=" << measurement->concentration.pm10 << endl;
+
         sensor->measurements.insert({timestamp, measurement});
+        cout << sensor->measurements.size() << endl;
         data->measurements.push_back(measurement);
     }
 }
