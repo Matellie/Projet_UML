@@ -4,6 +4,7 @@ OBJ = $(INT:src/%.h=obj/%.o) obj/main.o
 CC = g++
 LIBS = -lm
 CPPFLAGS = -ansi -pedantic -Wall -std=c++11 -g #-DMAP
+COMPILEDEFINE = #	-DPERFORMANCE_EVALUATION
 LDFLAGS = 
 DEPFLAGS = -MT $@ -MMD -MP -MF deps/$*.d
 RM = rm
