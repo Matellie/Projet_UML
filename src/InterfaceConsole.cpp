@@ -215,7 +215,7 @@ void InterfaceConsole::analyseComparaisonCapteur()
   clock_t t = clock();
 	vector<string> result = analyse.SensorSimilarity(itMeasure->second);
   float d = ((double) (clock() - t)) / CLOCKS_PER_SEC;
-  printf("Execution time = %.3fs\n\n", d);
+  printf("Execution time = %.3fs\n", d);
 	for (auto s : result)
 		cout << *(analyse.data->sensors[s]->measurements[timestamp]) << endl;
 }
@@ -256,7 +256,8 @@ void InterfaceConsole::analyseQualiteZone()
 	strftime(f, 50, "%d/%m/%Y à %H:%M:%S", &tm_fin);
 
 	cout << "analyse de la qualite de l'air moyenne dans un rayon de " << rayon << " autour de (" << lat << ';' << lon << ") entre le " << d << " et le " << f << endl;
-	int result = analyse.AirQualityAverage(Position(lat, lon), rayon, debut, fin);
+	clock_t t = clock();
+  int result = analyse.AirQualityAverage(Position(lat, lon), rayon, debut, fin);
 	if (result == -1)
 	{
 		cout << "l'analyse a échoué, il n'y a pas de mesures correspondant a votre recherche" << endl;
@@ -265,4 +266,7 @@ void InterfaceConsole::analyseQualiteZone()
 	{
 		cout << "qualite de l'air moyenne: " << result << endl;
 	}
+
+  float delta = ((double) (clock() - t)) / CLOCKS_PER_SEC;
+  printf("Execution time = %.3fs\n", delta);
 }
